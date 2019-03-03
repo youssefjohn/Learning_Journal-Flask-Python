@@ -25,7 +25,7 @@ def register():
             db.session.add(addition)
             db.session.commit()
 
-            return redirect(url_for("users_blueprint.register"))
+            return redirect(url_for("core_blueprint.index_page"))
 
 
 
@@ -40,7 +40,9 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
 
         if user.check_password(form.password.data) and user is not None:
-            login_user()
+            login_user(user)
+
+            return redirect(url_for("core_blueprint.index_page"))
 
 
 

@@ -32,3 +32,7 @@ app.register_blueprint(core_blueprint)
 
 from Learning_Journal.Users.views import users_blueprint
 app.register_blueprint(users_blueprint)
+
+
+from Learning_Journal.Journals.views import journal_blueprint
+app.register_blueprint(journal_blueprint)

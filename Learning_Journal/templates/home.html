@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Hi and Welcome! Please log in to create/delete/edit a post.</h1>
+    {% if current_user.is_authenticated %}
+    <h2>Welcome {{ current_user.name }}</h2>
+    {% endif %}
+
+{% endblock %}
