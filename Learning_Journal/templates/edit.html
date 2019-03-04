@@ -24,16 +24,13 @@
                 <div class="edit-entry">
                     <h2>Edit Entry</h2>
                     <form>
-                        <label for="title"> Title</label>
-                        <input id="title" type="text" name="title"><br>
-                        <label for="date">Date</label>
-                        <input id="date" type="date" name="date"><br>
-                        <label for="time-spent"> Time Spent</label>
-                        <input id="time-spent" type="text" name="timeSpent"><br>
-                        <label for="what-i-learned">What I Learned</label>
-                        <textarea id="what-i-learned" rows="5" name="whatILearned"></textarea>
-                        <label for="resources-to-remember">Resources to Remember</label>
-                        <textarea id="resources-to-remember" rows="5" name="ResourcesToRemember"></textarea>
+                        {{ form.hidden_tag() }}
+                        {{ form.title.label }}{{ form.title }}
+                        {{ form.date.label }}{{ form.date }}
+                        {{ form.time_spent.label }}{{ form.time_spent }}
+                        {{ form.what_i_learned.label }}{{ form.what_i_learned }}
+                        {{ form.resources_to_remember.label }}{{ form.resources_to_remember }}
+                        {{ form.submit.label }}{{ form.submit }}
                         <input type="submit" value="Publish Entry" class="button">
                         <a href="#" class="button button-secondary">Cancel</a>
                     </form>

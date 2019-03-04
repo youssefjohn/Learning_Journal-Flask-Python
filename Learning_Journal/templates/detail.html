@@ -15,6 +15,7 @@
                 <div class="entry-list single">
                     {% for thing in journals %}
                         <article>
+                        <h1> Entry ID:{{ thing.id }}</h1>
                         <h1>{{ thing.title }}</h1>
                         <time>{{ thing.date }}</time>
                         <div class="entry">
@@ -33,15 +34,15 @@
                             </ul>
                         </div>
                     </article>
-
+                    <div class="edit">
+                        <p><a href="{{ url_for("journal_blueprint.update") }}">Edit Entry</a></p>
+                    </div>
                     {% endfor %}
 
 
                 </div>
             </div>
-            <div class="edit">
-                <p><a href="edit.html">Edit Entry</a></p>
-            </div>
+
         </section>
         <footer>
             <div>

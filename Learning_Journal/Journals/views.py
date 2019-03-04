@@ -38,12 +38,30 @@ def add_edit():
         db.session.add(new_journal)
         db.session.commit()
 
-        return redirect("core_blueprint.index_page")
+        return redirect(url_for("core_blueprint.index_page"))
 
     else:
         print("h")
+        print("FORM ERRORS: \n", form.errors)
 
 
     return render_template("new.html", form=form)
+
+
+@journal_blueprint.route("/edit", methods = ["GET", "POST"])
+@login_required
+def update(blog_post_id):
+    entry = Journal_Entry.query.get(blog_post_id)
+
+    form = JournalForm()
+
+    if form.validate_on_submit():
+
+
+
+
+    return render_template("edit.html", form = form)
+
+
 
 

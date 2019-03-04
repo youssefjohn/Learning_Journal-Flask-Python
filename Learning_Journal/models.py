@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):
 
 
 class Journal_Entry(db.Model, UserMixin):
-    #users = db.relationship(User)
+    users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
