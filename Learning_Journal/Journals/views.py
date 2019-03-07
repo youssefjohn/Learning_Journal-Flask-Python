@@ -26,7 +26,6 @@ def add_edit():
     form = JournalForm()
 
 
-
     if form.validate_on_submit():
         new_journal = Journal_Entry(title=form.title.data,
                                     date=form.date.data,
@@ -48,12 +47,17 @@ def add_edit():
     return render_template("new.html", form=form)
 
 
+
+
+
+
 @journal_blueprint.route("/<int:journal_post_id>/edit", methods = ["GET", "POST"])
 @login_required
 def update(journal_post_id):
+
     form = JournalForm()
     entry = Journal_Entry.query.filter_by(id=journal_post_id).first()
-
+    print(entry)
 
     if form.validate_on_submit():
         entry.title = form.title.data
@@ -65,10 +69,10 @@ def update(journal_post_id):
 
         db.session.add(entry)
         db.session.commit()
+    
+        return redirect("details")
 
-
-
-    return render_template("edit.html", form = form, journal_post_id=entry.id)
+    return render_template("edit.html", form = form)
 
 
 

@@ -37,7 +37,7 @@ class Journal_Entry(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    date = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     time_spent = db.Column(db.Integer)
     what_i_learned = db.Column(db.Text)
     resources_to_remember = db.Column(db.Text)
@@ -54,7 +54,8 @@ class Journal_Entry(db.Model, UserMixin):
 
 
 
-
+    def __repr__(self):
+        return "hello it worked {},{},{},{},{},{}".format(self.title, self.date, self.time_spent, self.what_i_learned, self.resources_to_remember, self.owner_id)
 
 
 

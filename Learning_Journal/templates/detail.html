@@ -35,7 +35,7 @@
                         </div>
                     </article>
                     <div class="edit">
-                        <p><a href="{{ url_for("journal_blueprint.update(thing.id)") }}">Edit Entry</a></p>
+                        <p><a href="{{ url_for("journal_blueprint.update", journal_post_id=thing.id) }}">Edit Entry</a></p>
                     </div>
                     {% endfor %}
 
