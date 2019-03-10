@@ -14,6 +14,7 @@ journal_blueprint = Blueprint('journal_blueprint', __name__)
 @journal_blueprint.route("/details")
 @login_required
 def details():
+    print(current_user.name)
     journals = Journal_Entry.query.all()
     return render_template("detail.html", journals=journals)
 
@@ -63,16 +64,30 @@ def update(journal_post_id):
         entry.title = form.title.data
         entry.date = form.date.data
         entry.time_spent = form.time_spent.data
-        entry.what_i_learned = form.what_i_learned
+        entry.what_i_learned = form.what_i_learned.data
         entry.resources_to_remember = form.resources_to_remember.data
         entry.owner_id = current_user.id
 
         db.session.add(entry)
         db.session.commit()
-    
+
         return redirect("details")
 
     return render_template("edit.html", form = form)
+
+
+@journal_blueprint.route("/<int:journal_post_id>/delete", methods=["GET", "POST"])
+@login_required
+def delete_post(journal_post_id):
+    entry = Journal_Entry.query.filter_by(id=journal_post_id).first()
+
+    if entry.owner_id != current_user.id:
+        return redirect(url_for("details"))
+
+    db.session.delete(entry)
+    db.session.commit()
+
+    return redirect(url_for("core_blueprint.index_page"))
 
 
 
