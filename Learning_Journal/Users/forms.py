@@ -1,3 +1,7 @@
+"""These is my forms for Users. One is a registration form which asks the user to confirm their password,
+   The other is a login form. There are also a number of imports from 'wtforms'
+"""
+
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, TextAreaField, DateTimeField, ValidationError, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo

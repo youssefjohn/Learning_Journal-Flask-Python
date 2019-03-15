@@ -1,3 +1,5 @@
+"""This is my forms file. It is what will be displayed on"""
+
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, TextAreaField, DateField, ValidationError, PasswordField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo

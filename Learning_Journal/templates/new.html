@@ -4,8 +4,8 @@
         <header>
             <div class="container">
                 <div class="site-header">
-                    <a class="logo" href="index.html"><i class="material-icons">library_books</i></a>
-                    <a class="button icon-right" href="{{ url_for("journal_blueprint.add_edit") }}"><span>New Entry</span> <i class="material-icons">add</i></a>
+                    <a class="logo" href="{{ url_for("journal_blueprint.add") }}"><i class="material-icons">library_books</i></a>
+                    <a class="button icon-right" href="{{ url_for("journal_blueprint.add") }}"><span>New Entry</span> <i class="material-icons">add</i></a>
                 </div>
             </div>
         </header>
@@ -17,11 +17,12 @@
 
                         {{ form.hidden_tag() }}
                         {{ form.title.label }}{{ form.title }}
-                        {{ form.date.label }}{{ form.date }}
+
+                        <p>{{ form.date.label }} YYYY-MM-DD</p>{{ form.date }}
                         {{ form.time_spent.label }}{{ form.time_spent }}
                         {{ form.what_i_learned.label }}{{ form.what_i_learned }}
                         {{ form.resources_to_remember.label }}{{ form.resources_to_remember }}
-                        {{ form.submit.label }}{{ form.submit }}
+                        {{ form.submit }}
 
                     </form>
                 </div>

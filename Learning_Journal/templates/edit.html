@@ -7,8 +7,8 @@
         <header>
             <div class="container">
                 <div class="site-header">
-                    <a class="logo" href="index.html"><i class="material-icons">library_books</i></a>
-                    <a class="button icon-right" href="new.html"><span>New Entry</span> <i class="material-icons">add</i></a>
+                    <a class="logo" href="{{ url_for("journal_blueprint.add") }}"><i class="material-icons">library_books</i></a>
+                    <a class="button icon-right" href="{{ url_for("journal_blueprint.add") }}"><span>New Entry</span> <i class="material-icons">add</i></a>
                 </div>
             </div>
         </header>
@@ -23,9 +23,8 @@
                         {{ form.time_spent.label }}{{ form.time_spent }}
                         {{ form.what_i_learned.label }}{{ form.what_i_learned }}
                         {{ form.resources_to_remember.label }}{{ form.resources_to_remember }}
-                        {{ form.submit.label }}{{ form.submit }}
                         <input type="submit" value="Publish Entry" class="button">
-                        <a href="#" class="button button-secondary">Cancel</a>
+                        <a href="{{ url_for("core_blueprint.index_page")}}" class="button button-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
