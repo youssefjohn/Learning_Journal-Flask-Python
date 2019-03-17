@@ -16,15 +16,16 @@ journal_blueprint = Blueprint('journal_blueprint', __name__)
 
 
 #read
-@journal_blueprint.route("/details")
+@journal_blueprint.route("/details/<int:journal_post_id>")
 @login_required
-def details():
+def details(journal_post_id):
     """This is my read view. It sends all of the journal entries into a variable list
        Then it send the list to the details template.
     """
 
-    journals = Journal_Entry.query.all()
-    return render_template("detail.html", journals=journals)
+    entry = Journal_Entry.query.filter_by(id=journal_post_id)
+
+    return render_template("detail.html", entry=entry)
 
 
 
@@ -82,9 +83,9 @@ def update(journal_post_id):
             db.session.add(entry)
             db.session.commit()
 
-            return redirect(url_for("journal_blueprint.details"))
+            return redirect(url_for("core_blueprint.index_page"))
     else:
-        return redirect(url_for("journal_blueprint.details"))
+        return redirect(url_for("core_blueprint.index_page"))
 
     return render_template("edit.html", form = form)
 
@@ -100,7 +101,7 @@ def delete_post(journal_post_id):
     entry = Journal_Entry.query.filter_by(id=journal_post_id).first()
 
     if entry.owner_id != current_user.id:
-        return redirect(url_for("journal_blueprint.details"))
+        return redirect(url_for("core_blueprint.index_page"))
 
     db.session.delete(entry)
     db.session.commit()
